@@ -2,6 +2,7 @@
 ######################
 node_modules/
 README.md
+public/upload/*
 
 # OS generated files #
 ######################
