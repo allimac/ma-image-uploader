@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var path = require('path');
 
 var CommentSchema = new Schema({
-  image_id: { type: ObjectId },
+  image_id: { type: Schema.Types.ObjectId },
   email: { type: String },
   name: { type: String },
   gravatar: { type: String },
@@ -13,7 +13,7 @@ var CommentSchema = new Schema({
 
 CommentSchema.virtual('image').set(function(image) {
   this._image = image;
-}).get(function() {
+  }).get(function() {
   return this._image;
 });
 

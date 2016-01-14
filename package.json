@@ -12,6 +12,7 @@
     "grunt": "^0.4.5",
     "handlebars": "^4.0.5",
     "jade": "^1.11.0",
+    "md5": "^2.0.0",
     "method-override": "^2.3.5",
     "moment": "^2.11.1",
     "mongodb": "^2.1.4",
