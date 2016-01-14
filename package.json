@@ -8,6 +8,9 @@
     "cookie-parser": "^1.4.1",
     "errorhandler": "^1.4.2",
     "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
+    "grunt": "^0.4.5",
+    "handlebars": "^4.0.5",
     "jade": "^1.11.0",
     "method-override": "^2.3.5",
     "mongodb": "^2.1.4",
@@ -15,10 +18,13 @@
   },
   "devDependencies": {
     "chai": "^3.4.1",
-    "mocha": "^2.3.4"
+    "grunt-webdriver": "^1.0.0",
+    "mocha": "^2.3.4",
+    "selenium-webdriver": "^2.48.2",
+    "webdriverio": "^3.4.0"
   },
   "scripts": {
-    "test": "mocha -r tests/testhelper.js -R nyan tests/**/*.test.js"
+    "test": "mocha -r test/testhelper.js -R nyan test/**/*.test.js"
   },
   "author": "",
   "license": "ISC"
