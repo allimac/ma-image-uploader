@@ -100,5 +100,24 @@ module.exports = {
           response.redirect('/');
         }
       });
+    },
+    remove: function(request, response) {
+      Models.Image.findOne({ filename : { $regex: request.params.image_id } },
+        function(err, image) {
+        if (err) { throw err; }
+        console.log("image"+image+"deleted!");
+        fs.unlink(path.resolve('./public/upload/'+image.filename), function(err) {
+          if (err) { throw err; }
+          Models.Comment.remove({ image_id: image._id }, function(err) {
+            image.remove(function(err) {
+              if (!err) {
+                response.json(true);
+              } else {
+                response.json(false);
+              }
+            });
+          });
+        });
+      });
     }
 };
