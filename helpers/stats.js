@@ -14,7 +14,6 @@ module.exports = function(callback) {
         if (result.length > 0) {
           viewsTotal += result[0].viewsTotal;
         }
-        console.log("total n of views:"+viewsTotal);
         next(null, viewsTotal);
       });
     }, function(next) {
@@ -22,7 +21,6 @@ module.exports = function(callback) {
     }}, function(err, result) {
       var likesTotal = 0;
       if (result.length > 0) {
-        console.log("total n of likes:"+likesTotal);
         likesTotal += result[0].likesTotal;
       }
       next(null, likesTotal);

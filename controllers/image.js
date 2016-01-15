@@ -15,7 +15,7 @@ module.exports = {
       function(err, image) {
         if (err) { throw err; }
         if (image) {
-          image.views = image.vies + 1;
+          image.views = image.views + 1;
           viewModel.image = image;
           image.save();
           Models.Comment.find({ image_id: image._id}, {}, { sort: { 'timestamp': 1} },
