@@ -1,22 +1,19 @@
+var async = require('async');
+var Model = require('../models');
+
 module.exports = {
-  newest: function() {
-    var comments = [
-      {
-          image_id:   1,
-          email:      'test@testing.com',
-          name:       'Test Tester',
-          gravatar:   'http://lorempixel.com/75/75/animals/1',
-          comment:    'This is a test comment...',
-          timestamp:  Date.now()
-      },{
-          image_id:   1,
-          email:      'test@testing.com',
-          name:       'Test Tester',
-          gravatar:   'http://lorempixel.com/75/75/animals/2',
-          comment:    'Another comment!',
-          timestamp:  Date.now()
-        }
-      ];
-    return comments;
+  newest: function(callback) {
+    Model.Comment.find({}, {}, {limit: 5, sort: {timestamp: -1} }, function(err, comments) {
+      var attachImage = function(comment, next) {
+        Model.Image.findOne({_id: comment.image_id}, function(err, image) {
+          comment.image = image;
+          next(err);
+        });
+      };
+      async.each(comments, attachImage, function(err) {
+        if (err) throw err;
+        callback(err, comments);
+      });
+    });
   }
 };
